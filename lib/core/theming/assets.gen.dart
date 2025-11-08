@@ -1,3 +1,5 @@
+// dart format width=80
+
 /// GENERATED CODE - DO NOT MODIFY BY HAND
 /// *****************************************************
 ///  FlutterGen
@@ -5,101 +7,75 @@
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
-// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
+// ignore_for_file: deprecated_member_use,directives_ordering,implicit_dynamic_list_literal,unnecessary_import
 
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart' as _svg;
 import 'package:vector_graphics/vector_graphics.dart' as _vg;
 
-class $AssetsImagesGen {
-  const $AssetsImagesGen();
+class $AssetsImgsGen {
+  const $AssetsImgsGen();
 
-  /// File path: assets/images/Vector.png
-  AssetGenImage get vector => const AssetGenImage('assets/images/Vector.png');
+  /// File path: assets/imgs/logo2.png
+  AssetGenImage get logo2 => const AssetGenImage('assets/imgs/logo2.png');
 
-  /// File path: assets/images/Vector_down.png
-  AssetGenImage get vectorDown =>
-      const AssetGenImage('assets/images/Vector_down.png');
-
-  /// File path: assets/images/femail_doc.png
-  AssetGenImage get femailDoc =>
-      const AssetGenImage('assets/images/femail_doc.png');
-
-  /// File path: assets/images/home_blue_pattern.png
-  AssetGenImage get homeBluePattern =>
-      const AssetGenImage('assets/images/home_blue_pattern.png');
-
-  /// File path: assets/images/onboarding_doctor.png
-  AssetGenImage get onboardingDoctor =>
-      const AssetGenImage('assets/images/onboarding_doctor.png');
-
-  /// File path: assets/images/splash.png
-  AssetGenImage get splash => const AssetGenImage('assets/images/splash.png');
-
-  /// File path: assets/images/splash_dark.png
-  AssetGenImage get splashDark =>
-      const AssetGenImage('assets/images/splash_dark.png');
-
-  /// File path: assets/images/splash_logo_android12.png
-  AssetGenImage get splashLogoAndroid12 =>
-      const AssetGenImage('assets/images/splash_logo_android12.png');
-
-  /// File path: assets/images/splash_logo_android12_dark.png
-  AssetGenImage get splashLogoAndroid12Dark =>
-      const AssetGenImage('assets/images/splash_logo_android12_dark.png');
+  /// File path: assets/imgs/splash_logo.png
+  AssetGenImage get splashLogo =>
+      const AssetGenImage('assets/imgs/splash_logo.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [
-        vector,
-        vectorDown,
-        femailDoc,
-        homeBluePattern,
-        onboardingDoctor,
-        splash,
-        splashDark,
-        splashLogoAndroid12,
-        splashLogoAndroid12Dark
-      ];
+  List<AssetGenImage> get values => [logo2, splashLogo];
 }
 
-class $AssetsSvgGen {
-  const $AssetsSvgGen();
+class $AssetsSvgsGen {
+  const $AssetsSvgsGen();
 
-  /// File path: assets/svg/docdoc_logo_low_opacity.svg
-  SvgGenImage get docdocLogoLowOpacity =>
-      const SvgGenImage('assets/svg/docdoc_logo_low_opacity.svg');
+  /// File path: assets/svgs/onboarding1.svg
+  SvgGenImage get onboarding1 =>
+      const SvgGenImage('assets/svgs/onboarding1.svg');
 
-  /// File path: assets/svg/general_speciality.svg
-  SvgGenImage get generalSpeciality =>
-      const SvgGenImage('assets/svg/general_speciality.svg');
+  /// File path: assets/svgs/onboarding2.svg
+  SvgGenImage get onboarding2 =>
+      const SvgGenImage('assets/svgs/onboarding2.svg');
 
-  /// File path: assets/svg/home-hedder-bell.svg
-  SvgGenImage get homeHedderBell =>
-      const SvgGenImage('assets/svg/home-hedder-bell.svg');
+  /// File path: assets/svgs/onboarding3.svg
+  SvgGenImage get onboarding3 =>
+      const SvgGenImage('assets/svgs/onboarding3.svg');
 
-  /// File path: assets/svg/icon.svg
-  SvgGenImage get icon => const SvgGenImage('assets/svg/icon.svg');
+  /// File path: assets/svgs/onboarding_shadow.svg
+  SvgGenImage get onboardingShadow =>
+      const SvgGenImage('assets/svgs/onboarding_shadow.svg');
 
-  /// File path: assets/svg/notifications.svg
-  SvgGenImage get notifications =>
-      const SvgGenImage('assets/svg/notifications.svg');
+  /// File path: assets/svgs/onboarding_shadow1.svg
+  SvgGenImage get onboardingShadow1 =>
+      const SvgGenImage('assets/svgs/onboarding_shadow1.svg');
+
+  /// File path: assets/svgs/onboarding_shadow2.svg
+  SvgGenImage get onboardingShadow2 =>
+      const SvgGenImage('assets/svgs/onboarding_shadow2.svg');
+
+  /// File path: assets/svgs/onboarding_shadow_solid.svg
+  SvgGenImage get onboardingShadowSolid =>
+      const SvgGenImage('assets/svgs/onboarding_shadow_solid.svg');
 
   /// List of all assets
   List<SvgGenImage> get values => [
-        docdocLogoLowOpacity,
-        generalSpeciality,
-        homeHedderBell,
-        icon,
-        notifications
-      ];
+    onboarding1,
+    onboarding2,
+    onboarding3,
+    onboardingShadow,
+    onboardingShadow1,
+    onboardingShadow2,
+    onboardingShadowSolid,
+  ];
 }
 
 class Assets {
   const Assets._();
 
-  static const $AssetsImagesGen images = $AssetsImagesGen();
-  static const $AssetsSvgGen svg = $AssetsSvgGen();
+  static const $AssetsImgsGen imgs = $AssetsImgsGen();
+  static const $AssetsSvgsGen svgs = $AssetsSvgsGen();
 }
 
 class AssetGenImage {
@@ -107,12 +83,14 @@ class AssetGenImage {
     this._assetName, {
     this.size,
     this.flavors = const {},
+    this.animation,
   });
 
   final String _assetName;
 
   final Size? size;
   final Set<String> flavors;
+  final AssetGenImageAnimation? animation;
 
   Image image({
     Key? key,
@@ -167,15 +145,8 @@ class AssetGenImage {
     );
   }
 
-  ImageProvider provider({
-    AssetBundle? bundle,
-    String? package,
-  }) {
-    return AssetImage(
-      _assetName,
-      bundle: bundle,
-      package: package,
-    );
+  ImageProvider provider({AssetBundle? bundle, String? package}) {
+    return AssetImage(_assetName, bundle: bundle, package: package);
   }
 
   String get path => _assetName;
@@ -183,18 +154,24 @@ class AssetGenImage {
   String get keyName => _assetName;
 }
 
-class SvgGenImage {
-  const SvgGenImage(
-    this._assetName, {
-    this.size,
-    this.flavors = const {},
-  }) : _isVecFormat = false;
+class AssetGenImageAnimation {
+  const AssetGenImageAnimation({
+    required this.isAnimation,
+    required this.duration,
+    required this.frames,
+  });
 
-  const SvgGenImage.vec(
-    this._assetName, {
-    this.size,
-    this.flavors = const {},
-  }) : _isVecFormat = true;
+  final bool isAnimation;
+  final Duration duration;
+  final int frames;
+}
+
+class SvgGenImage {
+  const SvgGenImage(this._assetName, {this.size, this.flavors = const {}})
+    : _isVecFormat = false;
+
+  const SvgGenImage.vec(this._assetName, {this.size, this.flavors = const {}})
+    : _isVecFormat = true;
 
   final String _assetName;
   final Size? size;
@@ -215,6 +192,7 @@ class SvgGenImage {
     String? semanticsLabel,
     bool excludeFromSemantics = false,
     _svg.SvgTheme? theme,
+    _svg.ColorMapper? colorMapper,
     ColorFilter? colorFilter,
     Clip clipBehavior = Clip.hardEdge,
     @deprecated Color? color,
@@ -234,6 +212,7 @@ class SvgGenImage {
         assetBundle: bundle,
         packageName: package,
         theme: theme,
+        colorMapper: colorMapper,
       );
     }
     return _svg.SvgPicture(
@@ -248,7 +227,8 @@ class SvgGenImage {
       placeholderBuilder: placeholderBuilder,
       semanticsLabel: semanticsLabel,
       excludeFromSemantics: excludeFromSemantics,
-      colorFilter: colorFilter ??
+      colorFilter:
+          colorFilter ??
           (color == null ? null : ColorFilter.mode(color, colorBlendMode)),
       clipBehavior: clipBehavior,
       cacheColorFilter: cacheColorFilter,
