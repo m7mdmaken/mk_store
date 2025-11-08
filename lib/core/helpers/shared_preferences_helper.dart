@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -8,9 +9,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// This class provides a unified interface for storing and retrieving various
 /// data types using both SharedPreferences (for non-sensitive data) and
 /// FlutterSecureStorage (for sensitive data like tokens and credentials).
-class SharedPreferencesHelper {
+class SharedPrefsHelper {
   // Private constructor to prevent instantiation
-  SharedPreferencesHelper._();
+  SharedPrefsHelper._();
 
   static SharedPreferences? _prefs;
   static bool _isInitialized = false;
@@ -50,7 +51,7 @@ class SharedPreferencesHelper {
       await _secureStorage.read(key: '_test_key');
 
       _isInitialized = true;
-      debugPrint('SharedPreferencesHelper: Successfully initialized');
+      log('SharedPreferencesHelper: Successfully initialized');
     } catch (e) {
       throw Exception('Failed to initialize SharedPreferencesHelper: $e');
     }

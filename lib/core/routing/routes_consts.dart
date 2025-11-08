@@ -1,6 +1,6 @@
 class RoutesConsts {
-  static const String onBoardingScreen = '/onBoardingScreen';
-  static const String loginScreen = '/loginScreen';
-  static const String homeScreen = '/homeScreen';
-  static const String signup = '/signup';
+  static const String onBoardingView = '/onBoardingView';
+  static const String loginView = '/loginView';
+  static const String homeView = '/homeView';
+  static const String signupView = '/signupView';
 }
