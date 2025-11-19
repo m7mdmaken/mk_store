@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mk_stationery/core/theming/color_manager.dart';
+import '/core/theming/text_styles.dart';
 
 import '/core/utils/app_regex.dart';
 
@@ -22,31 +23,17 @@ class PasswordTextFormField extends StatelessWidget {
       obscureText: !isPasswordVisible,
       decoration: InputDecoration(
         labelText: 'Password',
-        labelStyle: const TextStyle(
-          color: ColorsManager.sageGreen,
-          fontSize: 16,
-        ),
-        // hintText: 'Enter your password',
+        labelStyle: AppTextStyles.caption,
+        //hintText: 'Enter your Password',
         prefixIcon: const Icon(Icons.lock_outline),
-        suffixIcon: IconButton(
-          icon: Icon(
-            isPasswordVisible
-                ? Icons.visibility_outlined
-                : Icons.visibility_off_outlined,
-          ),
-          onPressed: onToggleVisibility,
-        ),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: Colors.blue, width: 2),
+          borderSide: const BorderSide(color: ColorsManager.textDark, width: 2),
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: ColorsManager.secondary,
-            width: 1.3,
-          ),
           borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: ColorsManager.beige, width: 1.3),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
@@ -57,6 +44,7 @@ class PasswordTextFormField extends StatelessWidget {
           borderSide: const BorderSide(color: Colors.red, width: 2),
         ),
       ),
+      style: AppTextStyles.body,
       validator: (value) {
         if (value == null ||
             value.isEmpty ||

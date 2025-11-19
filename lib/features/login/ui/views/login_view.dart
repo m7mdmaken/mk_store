@@ -27,7 +27,7 @@ class LoginView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 40.h),
-                Text("Welcome Back", style: AppTextStyles.button),
+                Text("Welcome Back", style: AppTextStyles.headline),
                 SizedBox(height: 15.h),
                 Text(
                   r"We're excited to have you back, can't wait to see what you've been up to since you last logged in.",
@@ -43,7 +43,7 @@ class LoginView extends StatelessWidget {
                 SizedBox(height: 30.h),
                 AppTextButton(
                   buttonText: "Login",
-                  textStyle: AppTextStyles.body,
+                  textStyle: AppTextStyles.button,
                   onPressed: () {
                     validateThenLogin(context);
                   },
@@ -51,7 +51,7 @@ class LoginView extends StatelessWidget {
                 SizedBox(height: 20.h),
                 AppTextButton(
                   buttonText: "Login with Google",
-                  textStyle: AppTextStyles.body,
+                  textStyle: AppTextStyles.button,
                   onPressed: () {
                     validateThenLoginWithGoogle(context);
                   },
@@ -71,20 +71,20 @@ class LoginView extends StatelessWidget {
   void validateThenLogin(BuildContext context) {
     if (context.read<LoginCubit>().formKey.currentState!.validate()) {
       context.read<LoginCubit>().emitSignIn();
-      showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            content: Row(
-              children: [
-                CircularProgressIndicator(),
-                SizedBox(width: 20.w),
-                Text("Logging in...", style: AppTextStyles.body),
-              ],
-            ),
-          );
-        },
-      );
+      // showDialog(
+      //   context: context,
+      //   builder: (context) {
+      //     return AlertDialog(
+      //       content: Row(
+      //         children: [
+      //           CircularProgressIndicator(),
+      //           SizedBox(width: 20.w),
+      //           Text("Logging in...", style: AppTextStyles.body),
+      //         ],
+      //       ),
+      //     );
+      //   },
+      // );
     }
   }
 

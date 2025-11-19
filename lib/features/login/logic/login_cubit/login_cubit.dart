@@ -7,8 +7,8 @@ import 'package:mk_stationery/features/login/data/repos/login_repo.dart';
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit({required this.authRepo}) : super(LoginStateInitial());
-  final AuthRepo authRepo;
+  LoginCubit({required this.loginRepo}) : super(LoginStateInitial());
+  final LoginRepo loginRepo;
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -18,7 +18,7 @@ class LoginCubit extends Cubit<LoginState> {
   Future<void> emitSignInWithGoogle() async {
     emit(LoginLoading());
 
-    final user = await authRepo.signInWithGoogle();
+    final user = await loginRepo.signInWithGoogle();
 
     user.fold(
       (gotFailure) => emit(LoginFailure(errorMessage: gotFailure.message)),
@@ -29,7 +29,7 @@ class LoginCubit extends Cubit<LoginState> {
   Future<void> emitSignIn() async {
     emit(LoginLoading());
 
-    final user = await authRepo.logInWithEmailAndPassword(
+    final user = await loginRepo.logInWithEmailAndPassword(
       email: emailController.text,
       password: passwordController.text,
     );

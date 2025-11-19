@@ -12,7 +12,10 @@ class DontHaveAccountText extends StatelessWidget {
       textAlign: TextAlign.center,
       text: TextSpan(
         children: [
-          TextSpan(text: "Don't have an account? ", style: AppTextStyles.body),
+          TextSpan(
+            text: "Don't have an account? ",
+            style: AppTextStyles.accent,
+          ),
           TextSpan(
             text: 'Sign Up',
             style: AppTextStyles.body,

@@ -7,7 +7,7 @@ class ColorsManager {
   static const Color grayBlue = Color(0xFF5B6D7A);
   static const Color sageGreen = Color(0xFF88A47F);
   static const Color offWhite = Color(0xFFF7F3ED);
-
+  static const Color darkGray = Color(0xFF4A4A4A);
   static const Color primary = softOrange;
   static const Color secondary = sageGreen;
   static const Color background = offWhite;

@@ -35,7 +35,7 @@ class AppTextStyles {
   static const TextStyle button = TextStyle(
     fontSize: 16,
     fontWeight: FontWeightHelper.semiBold,
-    color: ColorsManager.offWhite, // نص فاتح فوق أزرار برتقالية
+    color: ColorsManager.darkGray, // نص فاتح فوق أزرار برتقالية
   );
 
   // نصوص مميزة
