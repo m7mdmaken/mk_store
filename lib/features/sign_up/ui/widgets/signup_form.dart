@@ -32,8 +32,6 @@ class _SignupFormState extends State<SignupForm> {
           const SizedBox(height: 18),
           const EmailTextFormField(),
           const SizedBox(height: 18),
-
-          const SizedBox(height: 18),
           PasswordTextFormField(
             isObscureText: isPasswordObscureText,
             suffixIcon: GestureDetector(
@@ -42,8 +40,13 @@ class _SignupFormState extends State<SignupForm> {
                   isPasswordObscureText = !isPasswordObscureText;
                 });
               },
-              child: Icon(
-                isPasswordObscureText ? Icons.visibility_off : Icons.visibility,
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Icon(
+                  isPasswordObscureText
+                      ? Icons.visibility_off
+                      : Icons.visibility,
+                ),
               ),
             ),
           ),
@@ -57,10 +60,13 @@ class _SignupFormState extends State<SignupForm> {
                       !isPasswordConfirmationObscureText;
                 });
               },
-              child: Icon(
-                isPasswordConfirmationObscureText
-                    ? Icons.visibility_off
-                    : Icons.visibility,
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Icon(
+                  isPasswordConfirmationObscureText
+                      ? Icons.visibility_off
+                      : Icons.visibility,
+                ),
               ),
             ),
           ),
@@ -69,7 +75,7 @@ class _SignupFormState extends State<SignupForm> {
           const SizedBox(height: 40),
           AppTextButton(
             buttonText: "Create Account",
-            textStyle: AppTextStyles.headline,
+            textStyle: AppTextStyles.button,
             onPressed: () {
               validateThenDoSignup(context);
             },

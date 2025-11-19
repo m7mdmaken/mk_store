@@ -42,7 +42,7 @@ class PasswordTextFormField extends StatelessWidget {
           borderSide: const BorderSide(color: Colors.red, width: 1.3),
           borderRadius: BorderRadius.circular(16),
         ),
-        hintStyle: AppTextStyles.headline,
+        hintStyle: AppTextStyles.caption,
         hintText: 'Password',
         suffixIcon: suffixIcon,
         suffixIconConstraints: const BoxConstraints(
@@ -50,7 +50,7 @@ class PasswordTextFormField extends StatelessWidget {
           minWidth: 24,
         ),
       ),
-      style: AppTextStyles.accent,
+      style: AppTextStyles.body,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'Please enter your password';

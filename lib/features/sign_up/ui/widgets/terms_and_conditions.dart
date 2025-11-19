@@ -15,9 +15,9 @@ class TermsAndConditions extends StatelessWidget {
             text: 'By creating an account, you agree to our ',
             style: AppTextStyles.body,
           ),
-          TextSpan(text: 'Terms & Conditions', style: AppTextStyles.headline),
-          TextSpan(text: ' and ', style: AppTextStyles.subhead),
-          TextSpan(text: 'Privacy Policy', style: AppTextStyles.headline),
+          TextSpan(text: 'Terms & Conditions', style: AppTextStyles.caption),
+          TextSpan(text: ' and ', style: AppTextStyles.body),
+          TextSpan(text: 'Privacy Policy', style: AppTextStyles.caption),
         ],
       ),
     );

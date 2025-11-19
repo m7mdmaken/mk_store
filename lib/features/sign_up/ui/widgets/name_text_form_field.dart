@@ -34,7 +34,7 @@ class NameTextFormField extends StatelessWidget {
           borderSide: const BorderSide(color: Colors.red, width: 1.3),
           borderRadius: BorderRadius.circular(16),
         ),
-        hintStyle: AppTextStyles.button,
+        hintStyle: AppTextStyles.caption,
         hintText: 'Name',
         suffixIconConstraints: const BoxConstraints(
           minHeight: 24,

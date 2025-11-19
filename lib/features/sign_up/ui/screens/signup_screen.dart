@@ -18,11 +18,11 @@ class SignupScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Create Account', style: AppTextStyles.accent),
+                Text('Create Account', style: AppTextStyles.headline),
                 const SizedBox(height: 8),
                 Text(
                   'Sign up now and start exploring all that our app has to offer.',
-                  style: AppTextStyles.button,
+                  style: AppTextStyles.body,
                 ),
                 const SizedBox(height: 36),
                 Column(

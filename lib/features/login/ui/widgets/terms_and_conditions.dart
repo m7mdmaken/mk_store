@@ -12,7 +12,7 @@ class TermsAndConditionsText extends StatelessWidget {
         children: [
           TextSpan(
             text: 'By logging in, you agree to our',
-            style: AppTextStyles.button,
+            style: AppTextStyles.body,
           ),
           TextSpan(text: ' Terms & Conditions', style: AppTextStyles.caption),
           TextSpan(

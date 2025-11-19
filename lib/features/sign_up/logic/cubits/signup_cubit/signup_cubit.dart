@@ -18,12 +18,7 @@ class SignupCubit extends Cubit<SignupState> {
   // TextEditingController phoneController = TextEditingController();
 
   final SignupRepo signupRepo;
-  Future<void> emitSignUpStates(
-    //TODO:
-    //  [String email,
-    //   String password,
-    //   String name,]
-  ) async {
+  Future<void> emitSignUpStates() async {
     emit(SignupLoading());
     final result = await signupRepo.signUpWithEmailAndPassword(
       emailController.text,

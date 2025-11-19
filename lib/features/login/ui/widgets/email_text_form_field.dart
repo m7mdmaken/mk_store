@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mk_stationery/core/theming/color_manager.dart';
+import 'package:mk_stationery/core/theming/text_styles.dart';
 
 import '/core/utils/app_regex.dart';
 
@@ -15,13 +16,13 @@ class EmailTextFormField extends StatelessWidget {
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
         labelText: 'Email',
-        labelStyle: TextStyle(color: ColorsManager.grayBlue, fontSize: 16),
+        labelStyle: AppTextStyles.caption,
         //hintText: 'Enter your email',
         prefixIcon: const Icon(Icons.email_outlined),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: Colors.blue, width: 2),
+          borderSide: const BorderSide(color: ColorsManager.textDark, width: 2),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
@@ -36,6 +37,7 @@ class EmailTextFormField extends StatelessWidget {
           borderSide: const BorderSide(color: Colors.red, width: 2),
         ),
       ),
+      style: AppTextStyles.body,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'Please enter your email';

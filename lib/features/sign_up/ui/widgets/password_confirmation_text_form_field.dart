@@ -26,17 +26,11 @@ class PasswordConfirmationTextFormField extends StatelessWidget {
           vertical: 18,
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: ColorsManager.lightBlue,
-            width: 1.3,
-          ),
+          borderSide: BorderSide(color: ColorsManager.textDark, width: 1.3),
           borderRadius: BorderRadius.circular(16),
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: ColorsManager.grayBlue,
-            width: 1.3,
-          ),
+          borderSide: const BorderSide(color: ColorsManager.beige, width: 1.3),
           borderRadius: BorderRadius.circular(16),
         ),
         errorBorder: OutlineInputBorder(
@@ -47,15 +41,14 @@ class PasswordConfirmationTextFormField extends StatelessWidget {
           borderSide: const BorderSide(color: Colors.red, width: 1.3),
           borderRadius: BorderRadius.circular(16),
         ),
-        hintStyle: AppTextStyles.button,
+        hintStyle: AppTextStyles.caption,
         hintText: 'Confirm Password',
-        suffixIcon: suffixIcon,
         suffixIconConstraints: const BoxConstraints(
           minHeight: 24,
           minWidth: 24,
         ),
       ),
-      style: AppTextStyles.headline,
+      style: AppTextStyles.body,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'Please confirm your password';
