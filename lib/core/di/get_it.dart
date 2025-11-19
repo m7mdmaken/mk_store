@@ -4,6 +4,8 @@ import 'package:mk_stationery/core/services/firebase_auth_service.dart';
 import 'package:mk_stationery/core/services/firestore_service.dart';
 import 'package:mk_stationery/features/login/data/repos/login_repo.dart';
 import 'package:mk_stationery/features/login/logic/login_cubit/login_cubit.dart';
+import 'package:mk_stationery/features/sign_up/data/repos/signup_repo.dart';
+import 'package:mk_stationery/features/sign_up/logic/cubits/signup_cubit/signup_cubit.dart';
 
 final getIt = GetIt.instance;
 
@@ -23,8 +25,14 @@ void _registerFirestore() {
 }
 
 void _registerRepositories() {
-  getIt.registerLazySingleton<AuthRepo>(
-    () => AuthRepo(
+  getIt.registerLazySingleton<LoginRepo>(
+    () => LoginRepo(
+      firebaseAuthService: getIt<FirebaseAuthService>(),
+      databaseService: getIt<DatabaseService>(),
+    ),
+  );
+  getIt.registerLazySingleton<SignupRepo>(
+    () => SignupRepo(
       firebaseAuthService: getIt<FirebaseAuthService>(),
       databaseService: getIt<DatabaseService>(),
     ),
@@ -32,11 +40,10 @@ void _registerRepositories() {
 }
 
 void _registerCubits() {
-  // Factory: new instance every time (e.g. per screen)
-  // getIt.registerFactory<SignupCubit>(
-  //   () => SignupCubit(authRepo: getIt<AuthRepo>()),
-  // );
+  getIt.registerFactory<SignupCubit>(
+    () => SignupCubit(signupRepo: getIt<SignupRepo>()),
+  );
   getIt.registerFactory<LoginCubit>(
-    () => LoginCubit(authRepo: getIt<AuthRepo>()),
+    () => LoginCubit(loginRepo: getIt<LoginRepo>()),
   );
 }

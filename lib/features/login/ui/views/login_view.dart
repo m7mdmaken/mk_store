@@ -71,20 +71,20 @@ class LoginView extends StatelessWidget {
   void validateThenLogin(BuildContext context) {
     if (context.read<LoginCubit>().formKey.currentState!.validate()) {
       context.read<LoginCubit>().emitSignIn();
-      showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            content: Row(
-              children: [
-                CircularProgressIndicator(),
-                SizedBox(width: 20.w),
-                Text("Logging in...", style: AppTextStyles.body),
-              ],
-            ),
-          );
-        },
-      );
+      // showDialog(
+      //   context: context,
+      //   builder: (context) {
+      //     return AlertDialog(
+      //       content: Row(
+      //         children: [
+      //           CircularProgressIndicator(),
+      //           SizedBox(width: 20.w),
+      //           Text("Logging in...", style: AppTextStyles.body),
+      //         ],
+      //       ),
+      //     );
+      //   },
+      // );
     }
   }
 
