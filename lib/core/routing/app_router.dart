@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mk_stationery/core/di/get_it.dart';
 
 import 'package:mk_stationery/core/routing/routes_consts.dart';
+import 'package:mk_stationery/features/login/logic/login_cubit/login_cubit.dart';
 import 'package:mk_stationery/features/login/ui/views/login_view.dart';
 import 'package:mk_stationery/features/on_boarding/ui/views/on_boarding.dart';
 
@@ -10,10 +13,21 @@ class AppRouter {
       case RoutesConsts.onBoardingView:
         return MaterialPageRoute(builder: (_) => const OnBoardingView());
       case RoutesConsts.loginView:
-        return MaterialPageRoute(builder: (_) => const LoginView());
-
+        return _loginScreenWithCubit();
+      case RoutesConsts.homeView:
+        return MaterialPageRoute(builder: (_) => const OnBoardingView());
       default:
         return null;
     }
+  }
+
+  MaterialPageRoute<dynamic> _loginScreenWithCubit() {
+    return MaterialPageRoute(
+      builder:
+          (_) => BlocProvider(
+            create: (context) => getIt<LoginCubit>(),
+            child: const LoginView(),
+          ),
+    );
   }
 }
