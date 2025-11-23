@@ -3,6 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mk_stationery/core/di/get_it.dart';
 
 import 'package:mk_stationery/core/routing/routes_consts.dart';
+import 'package:mk_stationery/features/home/logic/cubit/products_cubit.dart';
+import 'package:mk_stationery/features/home/ui/views/home_screen.dart';
+
 import 'package:mk_stationery/features/login/logic/login_cubit/login_cubit.dart';
 import 'package:mk_stationery/features/login/ui/views/login_view.dart';
 import 'package:mk_stationery/features/on_boarding/ui/views/on_boarding.dart';
@@ -17,7 +20,7 @@ class AppRouter {
       case RoutesConsts.loginView:
         return _loginScreenWithCubit();
       case RoutesConsts.homeView:
-        return MaterialPageRoute(builder: (_) => Text("home"));
+        return _homeScreenWithCubit();
       case RoutesConsts.signupView:
         return _signupScreenWithCubit();
       default:
@@ -41,6 +44,23 @@ class AppRouter {
           (_) => BlocProvider(
             create: (context) => getIt<LoginCubit>(),
             child: const LoginView(),
+          ),
+    );
+  }
+
+  MaterialPageRoute<dynamic> _homeScreenWithCubit() {
+    return MaterialPageRoute(
+      builder:
+          (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => getIt<ProductsCubit>()..fetchProducts(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<ProductsCubit>()..fetchCategories(),
+              ),
+            ],
+            child: const HomeScreen(),
           ),
     );
   }
