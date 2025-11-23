@@ -2,10 +2,14 @@ import 'package:get_it/get_it.dart';
 import 'package:mk_stationery/core/services/database_service.dart';
 import 'package:mk_stationery/core/services/firebase_auth_service.dart';
 import 'package:mk_stationery/core/services/firestore_service.dart';
+import 'package:mk_stationery/features/home/data/api/api_helpers/dio_factory.dart';
+import 'package:mk_stationery/features/home/data/api/web_services.dart';
+import 'package:mk_stationery/features/home/data/repos/products_repo.dart';
 import 'package:mk_stationery/features/login/data/repos/login_repo.dart';
 import 'package:mk_stationery/features/login/logic/login_cubit/login_cubit.dart';
 import 'package:mk_stationery/features/sign_up/data/repos/signup_repo.dart';
 import 'package:mk_stationery/features/sign_up/logic/cubits/signup_cubit/signup_cubit.dart';
+import 'package:mk_stationery/features/home/logic/cubit/products_cubit.dart';
 
 final getIt = GetIt.instance;
 
@@ -37,6 +41,12 @@ void _registerRepositories() {
       databaseService: getIt<DatabaseService>(),
     ),
   );
+  getIt.registerLazySingleton<ProductsRepo>(
+    () => ProductsRepo(getIt<WebServices>()),
+  );
+  getIt.registerLazySingleton<WebServices>(
+    () => WebServices(DioFactory.create()),
+  );
 }
 
 void _registerCubits() {
@@ -45,5 +55,9 @@ void _registerCubits() {
   );
   getIt.registerFactory<LoginCubit>(
     () => LoginCubit(loginRepo: getIt<LoginRepo>()),
+  );
+
+  getIt.registerFactory<ProductsCubit>(
+    () => ProductsCubit(getIt<ProductsRepo>()),
   );
 }

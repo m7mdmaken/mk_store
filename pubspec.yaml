@@ -62,12 +62,19 @@ dependencies:
   dartz: ^0.10.1
   google_sign_in: ^7.2.0
   cloud_firestore: ^5.6.12
+  retrofit: ^4.9.0
+  dio: ^5.9.0
+  json_annotation: ^4.9.0
+  skeletonizer: ^2.1.0+1
+  
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  
+  json_serializable: ^6.1.5
+  retrofit_generator: 10.0.6
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your

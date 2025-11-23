@@ -17,51 +17,49 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Padding(
-            padding: const EdgeInsets.all(24),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 40.h),
-                Text("Welcome Back", style: AppTextStyles.headline),
-                SizedBox(height: 15.h),
-                Text(
-                  r"We're excited to have you back, can't wait to see what you've been up to since you last logged in.",
-                  style: AppTextStyles.caption,
-                ),
-                SizedBox(height: 25.h),
-                EmailAndPassword(),
-                SizedBox(height: 20.h),
-                Align(
-                  alignment: AlignmentDirectional.centerEnd,
-                  child: Text("forgot password?", style: AppTextStyles.body),
-                ),
-                SizedBox(height: 30.h),
-                AppTextButton(
-                  buttonText: "Login",
-                  textStyle: AppTextStyles.button,
-                  onPressed: () {
-                    validateThenLogin(context);
-                  },
-                ),
-                SizedBox(height: 20.h),
-                AppTextButton(
-                  buttonText: "Login with Google",
-                  textStyle: AppTextStyles.button,
-                  onPressed: () {
-                    validateThenLoginWithGoogle(context);
-                  },
-                ),
-                const TermsAndConditionsText(),
-                SizedBox(height: 20.h),
-                Center(child: const DontHaveAccountText()),
-                const LoginBlocListener(),
-              ],
-            ),
+    return Scaffold(
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 40.h),
+              Text("Welcome Back", style: AppTextStyles.headline),
+              SizedBox(height: 15.h),
+              Text(
+                r"We're excited to have you back, can't wait to see what you've been up to since you last logged in.",
+                style: AppTextStyles.caption,
+              ),
+              SizedBox(height: 25.h),
+              EmailAndPassword(),
+              SizedBox(height: 20.h),
+              Align(
+                alignment: AlignmentDirectional.centerEnd,
+                child: Text("forgot password?", style: AppTextStyles.body),
+              ),
+              SizedBox(height: 30.h),
+              AppTextButton(
+                buttonText: "Login",
+                textStyle: AppTextStyles.button,
+                onPressed: () {
+                  validateThenLogin(context);
+                },
+              ),
+              SizedBox(height: 20.h),
+              AppTextButton(
+                buttonText: "Login with Google",
+                textStyle: AppTextStyles.button,
+                onPressed: () {
+                  validateThenLoginWithGoogle(context);
+                },
+              ),
+              const TermsAndConditionsText(),
+              SizedBox(height: 20.h),
+              Center(child: const DontHaveAccountText()),
+              const LoginBlocListener(),
+            ],
           ),
         ),
       ),
