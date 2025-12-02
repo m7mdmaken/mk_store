@@ -4,11 +4,11 @@ import 'package:mk_stationery/core/constants.dart';
 import 'package:mk_stationery/core/theming/color_manager.dart';
 import 'package:mk_stationery/features/home/data/models/product/product.dart';
 
-import '../widgets/add_to_cart.dart';
+import 'add_to_cart.dart';
 
-import '../widgets/counter_with_fav_btn.dart';
-import '../widgets/description.dart';
-import '../widgets/product_title_with_image.dart';
+import 'counter_with_fav_btn.dart';
+import 'description.dart';
+import 'product_title_with_image.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({super.key, required this.product});

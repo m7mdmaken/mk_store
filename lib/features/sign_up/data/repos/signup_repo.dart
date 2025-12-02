@@ -31,6 +31,7 @@ class SignupRepo {
       user = await firebaseAuthService.signUpWithEmailAndPassword(
         emailAddress: email,
         password: password,
+        name: name,
       );
       await addUserData(
         userEntity: UserEntity(email: email, name: name, uId: user.uid),

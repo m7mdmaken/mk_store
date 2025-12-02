@@ -2,12 +2,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mk_stationery/core/constants.dart';
-import 'package:mk_stationery/features/home/ui/widgets/home_grid_builder.dart';
+import 'package:mk_stationery/features/home/ui/views/home/widgets/catigory_selector.dart';
+import 'package:mk_stationery/features/home/ui/views/home/widgets/home_grid_builder.dart';
+import 'package:mk_stationery/features/home/ui/views/home/widgets/home_products_grid.dart';
+
 import 'package:mk_stationery/core/theming/color_manager.dart';
 import 'package:mk_stationery/features/home/data/models/product/product.dart';
 import 'package:mk_stationery/features/home/logic/cubit/products_cubit.dart';
-import 'package:mk_stationery/features/home/ui/widgets/catigory_selector.dart';
-import 'package:mk_stationery/features/home/ui/widgets/home_products_grid.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

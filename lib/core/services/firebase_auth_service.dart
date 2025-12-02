@@ -61,7 +61,7 @@ class FirebaseAuthService {
   Future<User> signUpWithEmailAndPassword({
     required String emailAddress,
     required String password,
-    // required String name,
+    String? name,
   }) async {
     try {
       final credential = await FirebaseAuth.instance
@@ -69,6 +69,13 @@ class FirebaseAuthService {
             email: emailAddress,
             password: password,
           );
+
+      // Update the user's profile with display name
+      if (name != null && credential.user != null) {
+        await credential.user!.updateProfile(displayName: name);
+        await credential.user!.reload();
+      }
+
       return credential.user!;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use' || e.code == 'weak-password') {
