@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mk_stationery/core/utils/nav_bar_controller.dart';
 import 'package:mk_stationery/features/home/ui/views/home/home_screen.dart';
+import 'package:mk_stationery/features/home/ui/views/favorites/favorites_view.dart';
 import 'package:mk_stationery/features/home/ui/views/profile/profile_view.dart';
 import 'package:mk_stationery/features/home/ui/views/home/widgets/nav_bar.dart';
 
@@ -12,34 +13,52 @@ class NavView extends StatefulWidget {
 }
 
 class _NavViewState extends State<NavView> {
-  final NavBarController _navController = NavBarController();
+  final NavBarController navController = NavBarController();
+  final GlobalKey<FavouritesViewState> favouritesKey =
+      GlobalKey<FavouritesViewState>();
+  int previousIndex = 0;
 
   @override
   void dispose() {
-    _navController.dispose();
+    navController.dispose();
     super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    navController.addListener(onNavIndexChanged);
+  }
+
+  void onNavIndexChanged() {
+    int currentIndex = navController.currentIndex;
+
+    if (currentIndex == 1 && previousIndex != 1) {
+      favouritesKey.currentState?.refreshFavourites();
+    }
+
+    previousIndex = currentIndex;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListenableBuilder(
-        listenable: _navController,
+        listenable: navController,
         builder: (context, child) {
           return IndexedStack(
-            index: _navController.currentIndex,
-            children: _getScreens(),
+            index: navController.currentIndex,
+            children: getScreens(),
           );
         },
       ),
-
       bottomNavigationBar: ListenableBuilder(
-        listenable: _navController,
+        listenable: navController,
         builder: (context, child) {
           return BottomNavBar(
-            currentIndex: _navController.currentIndex,
+            currentIndex: navController.currentIndex,
             onTabChange: (index) {
-              _navController.updateIndex(index);
+              navController.updateIndex(index);
             },
           );
         },
@@ -47,14 +66,11 @@ class _NavViewState extends State<NavView> {
     );
   }
 
-  List<Widget> _getScreens() {
+  List<Widget> getScreens() {
     return [
       const HomeScreen(),
-
+      FavouritesView(key: favouritesKey, navController: navController),
       const SizedBox(),
-
-      const SizedBox(),
-
       const ProfileView(),
     ];
   }

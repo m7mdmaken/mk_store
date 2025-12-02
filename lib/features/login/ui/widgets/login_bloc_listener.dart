@@ -32,7 +32,7 @@ class LoginBlocListener extends StatelessWidget {
           );
         } else if (state is LoginSuccess) {
           context.pop();
-          context.pushNamed(RoutesConsts.homeView);
+          context.pushReplacementNamed(RoutesConsts.homeView);
         } else if (state is LoginFailure) {
           setupErrorState(context, state.errorMessage);
         }

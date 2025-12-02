@@ -29,15 +29,26 @@ class ProductsCubit extends Cubit<ProductsState> {
 
   void fetchProductsByCategory(String category) {
     emit(ProductsLoading());
-    repo.getProductsGroupedByCategory().then((result) {
-      if (result is Success<Map<String, List<Product>>>) {
-        final categoryMap = result.data;
-        final categoryProducts = categoryMap[category] ?? [];
-        emit(ProductsLoaded(categoryProducts));
-      } else if (result is Failure<Map<String, List<Product>>>) {
-        emit(ProductsError(result.apiErrorModel));
-      }
-    });
+
+    if (category == 'All Products') {
+      repo.getAllProducts().then((result) {
+        if (result is Success<List<Product>>) {
+          emit(ProductsLoaded(result.data));
+        } else if (result is Failure<List<Product>>) {
+          emit(ProductsError(result.apiErrorModel));
+        }
+      });
+    } else {
+      repo.getProductsGroupedByCategory().then((result) {
+        if (result is Success<Map<String, List<Product>>>) {
+          final categoryMap = result.data;
+          final categoryProducts = categoryMap[category] ?? [];
+          emit(ProductsLoaded(categoryProducts));
+        } else if (result is Failure<Map<String, List<Product>>>) {
+          emit(ProductsError(result.apiErrorModel));
+        }
+      });
+    }
   }
 
   void fetchCategories() {

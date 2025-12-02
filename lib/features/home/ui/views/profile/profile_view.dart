@@ -18,7 +18,9 @@ class ProfileView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        leading: SizedBox.shrink(),
         title: const Text('Profile'),
+        centerTitle: true,
         backgroundColor: ColorsManager.background,
         elevation: 0,
       ),
