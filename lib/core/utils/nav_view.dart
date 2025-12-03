@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mk_stationery/core/utils/nav_bar_controller.dart';
+import 'package:mk_stationery/features/cart/ui/views/cart_view.dart';
 import 'package:mk_stationery/features/home/ui/views/home/home_screen.dart';
 import 'package:mk_stationery/features/home/ui/views/favorites/favorites_view.dart';
 import 'package:mk_stationery/features/home/ui/views/profile/profile_view.dart';
@@ -70,7 +71,7 @@ class _NavViewState extends State<NavView> {
     return [
       const HomeScreen(),
       FavouritesView(key: favouritesKey, navController: navController),
-      const SizedBox(),
+      const CartView(),
       const ProfileView(),
     ];
   }

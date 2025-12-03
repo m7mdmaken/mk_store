@@ -1,68 +1,54 @@
 import 'package:flutter/material.dart';
-import 'package:mk_stationery/core/constants.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mk_stationery/core/di/get_it.dart';
+import 'package:mk_stationery/features/cart/logic/cubit/cart_cubit.dart';
 
-class CartCounter extends StatefulWidget {
+class CartCounter extends StatelessWidget {
   const CartCounter({super.key});
 
   @override
-  State<CartCounter> createState() => _CartCounterState();
-}
-
-class _CartCounterState extends State<CartCounter> {
-  int numOfItems = 1;
-  @override
   Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        SizedBox(
-          width: 40,
-          height: 32,
-          child: OutlinedButton(
-            style: OutlinedButton.styleFrom(
-              padding: EdgeInsets.zero,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(13),
-              ),
+    return BlocBuilder<CartCubit, CartState>(
+      bloc: getIt<CartCubit>(),
+      builder: (context, state) {
+        final cartCubit = getIt<CartCubit>();
+        final totalQuantity = cartCubit.cartEntity.calculateTotalQuantity();
+        return Stack(
+          children: [
+            IconButton(
+              icon: const Icon(Icons.shopping_cart),
+              onPressed: () {
+                Navigator.pushNamed(context, '/cartView');
+              },
             ),
-            onPressed: () {
-              setState(() {
-                if (numOfItems > 1) {
-                  setState(() {
-                    numOfItems--;
-                  });
-                }
-              });
-            },
-            child: const Icon(Icons.remove),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: kDefaultPaddin / 2),
-          child: Text(
-            // if our item is less  then 10 then  it shows 01 02 like that
-            numOfItems.toString().padLeft(2, "0"),
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
-        ),
-        SizedBox(
-          width: 40,
-          height: 32,
-          child: OutlinedButton(
-            style: OutlinedButton.styleFrom(
-              padding: EdgeInsets.zero,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(13),
+            if (totalQuantity > 0)
+              Positioned(
+                right: 8,
+                top: 8,
+                child: Container(
+                  padding: const EdgeInsets.all(2),
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  constraints: const BoxConstraints(
+                    minWidth: 16,
+                    minHeight: 16,
+                  ),
+                  child: Text(
+                    '$totalQuantity',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
               ),
-            ),
-            onPressed: () {
-              setState(() {
-                numOfItems++;
-              });
-            },
-            child: const Icon(Icons.add),
-          ),
-        ),
-      ],
+          ],
+        );
+      },
     );
   }
 }

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mk_stationery/core/di/get_it.dart';
-
 import 'package:mk_stationery/core/routing/routes_consts.dart';
 import 'package:mk_stationery/core/utils/nav_view.dart';
+import 'package:mk_stationery/features/cart/logic/cubit/cart_cubit.dart';
 import 'package:mk_stationery/features/home/logic/cubit/products_cubit.dart';
-
+import 'package:mk_stationery/features/cart/ui/views/cart_view.dart';
 import 'package:mk_stationery/features/login/logic/login_cubit/login_cubit.dart';
 import 'package:mk_stationery/features/login/ui/views/login_view.dart';
 import 'package:mk_stationery/features/on_boarding/ui/views/on_boarding.dart';
@@ -23,6 +23,8 @@ class AppRouter {
         return _homeScreenWithCubit();
       case RoutesConsts.signupView:
         return _signupScreenWithCubit();
+      case RoutesConsts.cartView:
+        return _cartScreen();
       default:
         return null;
     }
@@ -51,13 +53,26 @@ class AppRouter {
   MaterialPageRoute<dynamic> _homeScreenWithCubit() {
     return MaterialPageRoute(
       builder:
-          (_) => BlocProvider(
-            create:
-                (context) =>
-                    getIt<ProductsCubit>()
-                      ..fetchProducts()
-                      ..fetchCategories(),
-            child: const NavView(),
+          (_) => BlocProvider.value(
+            value: getIt<CartCubit>(),
+            child: BlocProvider(
+              create:
+                  (context) =>
+                      getIt<ProductsCubit>()
+                        ..fetchProducts()
+                        ..fetchCategories(),
+              child: const NavView(),
+            ),
+          ),
+    );
+  }
+
+  MaterialPageRoute<dynamic> _cartScreen() {
+    return MaterialPageRoute(
+      builder:
+          (_) => BlocProvider.value(
+            value: getIt<CartCubit>(),
+            child: const CartView(),
           ),
     );
   }

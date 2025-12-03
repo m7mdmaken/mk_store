@@ -4,4 +4,5 @@ class RoutesConsts {
   static const String homeView = '/homeView';
   static const String signupView = '/signupView';
   static const String navView = '/navView';
+  static const String cartView = '/cartView';
 }

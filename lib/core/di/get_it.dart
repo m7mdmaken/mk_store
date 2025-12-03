@@ -5,6 +5,7 @@ import 'package:mk_stationery/core/services/firestore_service.dart';
 import 'package:mk_stationery/features/home/data/api/api_helpers/dio_factory.dart';
 import 'package:mk_stationery/features/home/data/api/web_services.dart';
 import 'package:mk_stationery/features/home/data/repos/products_repo.dart';
+import 'package:mk_stationery/features/cart/logic/cubit/cart_cubit.dart';
 import 'package:mk_stationery/features/login/data/repos/login_repo.dart';
 import 'package:mk_stationery/features/login/logic/login_cubit/login_cubit.dart';
 import 'package:mk_stationery/features/sign_up/data/repos/signup_repo.dart';
@@ -60,4 +61,6 @@ void _registerCubits() {
   getIt.registerFactory<ProductsCubit>(
     () => ProductsCubit(getIt<ProductsRepo>()),
   );
+
+  getIt.registerSingleton<CartCubit>(CartCubit());
 }
